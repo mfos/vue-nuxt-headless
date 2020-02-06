@@ -1,39 +1,27 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        Projects
-      </h1>
-      <h2 class="subtitle">
-        My gnarly Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+    <section>
+      <h1>projects</h1>
+      <div v-for="project in githubProjects" :key="project.id">
+        <h3><a :href="project.html_url">{{project.name}}</a></h3>
+        <p>{{project.stargazers_count}}</p>
+        <p>{{project.homepage}}</p>
+        <p>{{project.description}}</p>
       </div>
-    </div>
+      </section>
+
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { mapState } from 'vuex'
 
 export default {
-  components: {
-    Logo
+  computed: {
+    ...mapState(["githubProjects"])
+  },
+  mounted() {
+    this.$store.dispatch("getGithubProjects");
   }
 }
 </script>
