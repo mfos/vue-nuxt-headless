@@ -42,7 +42,19 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+
+// axios: {
+//   // proxyHeaders: false
+//   baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+// },
+//   env: {
+//     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+// },
+  env: {
+    baseUrl: (process.env.BASE_URL === 'production' ? 'https//focused-hawking-56f2e2.netlify.com' : 'http://localhost:3000')
+  },
   /*
   ** Build configuration
   */

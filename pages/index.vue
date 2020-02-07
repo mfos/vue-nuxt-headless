@@ -1,39 +1,12 @@
 <template>
   <section class="container">
     <h1>
-      <a
-        href="https://medium.com/@johnryancottam/running-nuxt-in-parallel-with-express-ffbd1feef83c"
-        target="_blank"
-        >Running NUXT in parallel with Express</a
-      >
+        Home
     </h1>
-    <div v-if="movie" class="movie">
-      <img :src="movie.Poster" />
-      <h2>{{ movie.Title }}</h2>
-      <h3>{{ movie.Year }}</h3>
-    </div>
-    <button @click="getNextMovie">Get Next Movie</button>
+
   </section>
 </template>
 
-<script>
-import axios from 'axios'
-
-export default {
-  asyncData({ params, error }) {
-    return axios.get('http://localhost:3000/api/next-movie').then((res) => {
-      return { movie: res.data }
-    })
-  },
-  methods: {
-    getNextMovie() {
-      return axios.get('http://localhost:3000/api/next-movie').then((res) => {
-        this.movie = res.data
-      })
-    }
-  }
-}
-</script>
 
 <style>
 .container {
